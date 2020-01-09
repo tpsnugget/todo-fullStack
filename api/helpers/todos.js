@@ -45,7 +45,7 @@ exports.updateTodo = function(req, res){
 exports.deleteTodo = function(req, res){
    // {new: true} means the db will return the updated data instead of the
    // default which would return the original version prior to the update
-   db.Todo.remove({_id: req.params.todoId}, req.body, {new: true})
+   db.Todo.remove({_id: req.params.todoId})
    .then(function(){
       res.json({message: "Todo Deleted"})
    })

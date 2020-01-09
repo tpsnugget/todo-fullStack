@@ -1,0 +1,9 @@
+.TodoList-container {
+   width: 50%;
+   margin: 2rem auto;
+}
+
+.TodoList-ul {
+   justify-content: start;
+   margin-top: 2rem;
+}

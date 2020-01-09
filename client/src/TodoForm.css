@@ -1,0 +1,23 @@
+.TodoForm-pieces {
+   margin: 0 0.5rem;
+}
+
+.TodoForm-input {
+   width: 50%;
+   height: 30px;
+   border: none;
+   border-bottom: 1px solid darkgray;
+   font-size: 1rem;
+}
+
+.TodoForm-input:focus {
+   outline: none;
+}
+
+.TodoForm-button {
+   width: 125px;
+   height: 40px;
+   padding: 10px;
+   border-radius: 0.5rem;
+   font-size: 1rem;
+}
