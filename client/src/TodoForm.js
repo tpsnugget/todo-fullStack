@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
+import "./TodoForm.css"
 
 class TodoForm extends Component {
 
@@ -32,17 +33,20 @@ class TodoForm extends Component {
    render() {
 
       const { inputValue } = this.state
+
       return (
-         <div>
-            <form>
-               <label>Todo:
+         <div className="TodoForm-container">
+            <form className="TodoForm-form">
+               <label className="TodoForm-pieces">Todo:
                   <input
+                     className="TodoForm-pieces TodoForm-input"
                      type="text"
                      value={inputValue}
                      onChange={this.handleChange}
                   />
                </label>
                <button
+                  className="TodoForm-pieces TodoForm-button"
                   onClick={this.handleSubmit}
                >Add Todo</button>
             </form>

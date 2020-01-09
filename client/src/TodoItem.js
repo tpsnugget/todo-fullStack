@@ -1,16 +1,53 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from "prop-types"
+import "./TodoItem.css"
 
-export default function TodoItem({ completed, name }) {
+class TodoItem extends Component {
 
-   TodoItem.propTypes = {
+   static propTypes = {
       /* Passed down from TodoList Component */
-      todo: PropTypes.object
+      /* Each full todo minus the id */
+      todo: PropTypes.object,
+
+      /* The delete function */
+      deleteTodo: PropTypes.func
    }
 
-   return (
-      <div>
-         <li style={{textDecoration: completed ? "line-through" : "none"}}>{name}</li>
-      </div>
-   )
+   handleClick = (e) => {
+      this.props.onDelete(e.target.id)
+   }
+
+   toggleClick = () => {
+      // console.log("this.props.todo in toggleClick ", this.props.todo)
+      this.props.onToggle(this.props.todo)
+   }
+
+   render() {
+
+      const { completed, id, name, toggleTodo, todo } = this.props
+
+      return (
+         <div className="TodoItem-container">
+            <div className="TodoItem-div-li">
+               <li
+                  className="TodoItem-li"
+                  id={id}
+                  style={{ textDecoration: completed ? "line-through" : "none" }}
+                  onClick={this.toggleClick}
+               >
+                  {name}
+               </li>
+            </div>
+            <div className="TodoItem-div-span">
+               <span
+                  className="TodoItem-span"
+                  id={id}
+                  onClick={this.handleClick}
+               >X</span>
+            </div>
+         </div>
+      )
+   }
 }
+
+export default TodoItem

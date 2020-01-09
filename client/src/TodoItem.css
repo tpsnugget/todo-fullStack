@@ -1,0 +1,30 @@
+.TodoItem-container {
+   display: flex;
+   width: 80%;
+}
+
+.TodoItem-container:hover {
+   opacity: 0.5;
+   font-weight: 900;
+   background-color: rgba(211, 211, 211, 0.5);
+   border-radius: 0.25rem;
+}
+
+.TodoItem-li {
+   list-style-type: none;
+   margin: 0.5rem 3rem;;
+}
+
+.TodoItem-div-li {
+   display: flex;
+   width: 80%;
+}
+
+.TodoItem-div-span {
+   width: 20%;
+   align-self: center;
+}
+
+.TodoItem-span {
+   justify-content: flex-end;
+}
