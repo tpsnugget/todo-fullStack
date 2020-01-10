@@ -28,12 +28,11 @@ class TodoItem extends Component {
 
       return (
          <div className="TodoItem-container">
-            <div className="TodoItem-div-li">
+            <div className="TodoItem-div-li" onClick={this.toggleClick}>
                <li
                   className="TodoItem-li"
                   id={id}
                   style={{ textDecoration: completed ? "line-through" : "none" }}
-                  onClick={this.toggleClick}
                >
                   {name}
                </li>

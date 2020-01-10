@@ -5,6 +5,7 @@
 
 .TodoList-inner-container {
    display: flex;
+   margin: 2rem 0;
 }
 
 .TodoList-ul-div {
@@ -15,7 +16,7 @@
    margin-top: 2rem;
    width: 30%;
    height: 180px;
-   padding: 1rem 0;
+   padding: 1.5rem;
    border: 1px solid lightgray;
    border-radius: 0.4rem;
 }

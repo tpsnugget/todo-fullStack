@@ -3,16 +3,16 @@ import TodoForm from "./TodoForm"
 import TodoItem from "./TodoItem"
 import Count from "./Count"
 import ToDelete from "./ToDelete"
-import "./TodoList.css"
+import { store } from "./store"
+import { loadTodosFromDB } from "./actions"
 import * as apiCalls from "./api"
+
+import "./TodoList.css"
 
 class TodoList extends Component {
 
    constructor(props) {
       super(props)
-      this.state = {
-         todos: []
-      }
       this.addTodo = this.addTodo.bind(this)
       this.deleteTodo = this.deleteTodo.bind(this)
       this.toggleTodo = this.toggleTodo.bind(this)
@@ -24,33 +24,38 @@ class TodoList extends Component {
 
    async loadTodos() {
       let todos = await apiCalls.getTodos()
-      this.setState({ todos })
+      store.dispatch(loadTodosFromDB(todos))
+      
    }
 
    async addTodo(todo) {
       let newTodo = await apiCalls.createTodo(todo)
-      this.setState({ todos: [...this.state.todos, newTodo] })
+      var { todos } = store.getState()
+      newTodo = [...todos, newTodo]
+      store.dispatch(loadTodosFromDB(newTodo))
    }
 
    async deleteTodo(id) {
       await apiCalls.removeTodo(id)
-      const todos = this.state.todos.filter(todo => todo._id !== id)
-      this.setState({ todos: todos })
+      var { todos } = store.getState()
+      todos = todos.filter(todo => todo._id !== id)
+      store.dispatch(loadTodosFromDB(todos))
    }
 
    async toggleTodo(todo) {
       let updatedTodo = await apiCalls.updateTodo(todo)
-      const todos = this.state.todos.map(t =>
+      var { todos } = store.getState()
+      var todos = todos.map(t =>
          (t._id === updatedTodo._id)
             ? { ...t, completed: !t.completed }
             : t
       )
-      this.setState({ todos: todos })
+      store.dispatch(loadTodosFromDB(todos))
    }
 
    render() {
 
-      var { todos } = this.state
+      var { todos } = store.getState()
 
       todos.sort((a, b) => {
          if (a.name < b.name) {
@@ -79,8 +84,8 @@ class TodoList extends Component {
                   </ul>
                </div>
                <div className="TodoList-count">
-                  <Count todos={this.state.todos}/>
-                  <ToDelete todos={this.state.todos}/>
+                  <Count todos={todos}/>
+                  <ToDelete todos={todos}/>
             </div>
             </div>
          </div>
