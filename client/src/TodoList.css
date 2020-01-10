@@ -1,9 +1,27 @@
 .TodoList-container {
-   width: 50%;
+   width: 60%;
    margin: 2rem auto;
+}
+
+.TodoList-inner-container {
+   display: flex;
+}
+
+.TodoList-ul-div {
+   width: 70%;
+}
+
+.TodoList-count {
+   margin-top: 2rem;
+   width: 30%;
+   height: 180px;
+   padding: 1rem 0;
+   border: 1px solid lightgray;
+   border-radius: 0.4rem;
 }
 
 .TodoList-ul {
    justify-content: start;
    margin-top: 2rem;
+   padding: 0;
 }

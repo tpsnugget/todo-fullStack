@@ -1,6 +1,7 @@
 .TodoItem-container {
    display: flex;
    width: 80%;
+   margin: 0;
 }
 
 .TodoItem-container:hover {
