@@ -6,6 +6,7 @@ export default (state, action) => {
          ...state,
          todos: action.todos
       }
+      default:
+      return state
    }
-   return state
 }
