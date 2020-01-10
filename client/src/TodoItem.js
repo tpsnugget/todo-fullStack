@@ -24,7 +24,7 @@ class TodoItem extends Component {
 
    render() {
 
-      const { completed, id, name, toggleTodo, todo } = this.props
+      const { completed, id, name } = this.props
 
       return (
          <div className="TodoItem-container">
